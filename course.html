@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Coaching Center - Courses</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f4f4f9;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 16px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .navbar .menu-icon {
+                display: none;
+                margin-right: 20px;
+                cursor: pointer;
+                font-size: 24px;
+            }
+
+        .navbar .logo {
+            margin-left: 20px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #007BFF;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin-left: 20px;
+            
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar ul li a:hover,
+        .navbar ul li a.active {
+            color: #007BFF;
+            border-bottom: 2px solid #007BFF;
+        }
+
+        /* Responsive Navbar for Phones */
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                right: 0;
+                background-color: #ffffff;
+                width: 100%;
+                display: none;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .navbar ul.show {
+                display: block;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+                
+                margin-right: 20px;
+                cursor: pointer;
+                font-size: 24px;
+            }
+        }
+
+        /* Course Page Styling */
+        .container {
+            width: 90%;
+            margin: 30px auto;
+            flex: 1;
+        }
+    
+        .page-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .courses-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Allow items to wrap */
+        }
+
+        .courses-section {
+            flex: 1; /* Grow to fill space */
+            min-width: 300px; /* Minimum width for responsiveness */
+            margin-right: 20px;
+        }
+
+        .course-card {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .course-description {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .course-date {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Suggestion Section */
+        .suggestion-section {
+            background-color: #f4f4f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .suggestion-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .suggestion-section textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .suggestion-section button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .suggestion-section button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #333;
+            color: #f4f4f9;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .courses-container {
+                flex-direction: column; /* Stack columns vertically on small screens */
+            }
+
+            .courses-section {
+                margin-right: 0; /* Remove right margin on small screens */
+                margin-bottom: 20px; /* Add bottom margin between sections */
+            }
+        }
+    </style>
+
+<link rel="apple-touch-icon" sizes="180x180" href="logo/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16x16.png">
+<link rel="manifest" href="logo/site.webmanifest">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Online Coaching Center</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul id="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html" class="active">Courses</a></li>
+            <li><a href="instructor.html">Instructors</a></li>
+            <li><a href="resource.html">Resources</a></li>
+            <li><a href="about.html">About Us</a></li>
+            
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </div>
+
+    <!-- Course Page Content -->
+    <div class="container">
+
+        <!-- Courses Section -->
+        <h2 class="page-title">Our Course List</h2>
+        <div class="courses-container">
+            <!-- Ongoing Courses Section -->
+            <div class="courses-section">
+                <h3 class="section-title">Ongoing Courses</h3>
+
+                <div class="course-card">
+                    <h3 class="course-title">Web Development Mastery</h3>
+                    <p class="course-description">Learn HTML, CSS, JavaScript, and backend development to become a full-stack developer.</p>
+                    <p class="course-date">Started: September 2024</p>
+                </div>
+
+                <div class="course-card">
+                    <h3 class="course-title">Data Science with Python</h3>
+                    <p class="course-description">Dive deep into data analysis, machine learning, and artificial intelligence using Python.</p>
+                    <p class="course-date">Started: August 2024</p>
+                </div>
+            </div>
+
+            <!-- Upcoming Courses Section -->
+            <div class="courses-section">
+                <h3 class="section-title">Upcoming Courses</h3>
+
+                <div class="course-card">
+                    <h3 class="course-title">Mobile App Development with Flutter</h3>
+                    <p class="course-description">Learn how to create beautiful, responsive, and fast mobile applications using Flutter.</p>
+                    <p class="course-date">Starts: November 2024</p>
+                </div>
+
+                <div class="course-card">
+                    <h3 class="course-title">Cybersecurity Essentials</h3>
+                    <p class="course-description">Understand the principles of protecting systems, networks, and data from cyber threats.</p>
+                    <p class="course-date">Starts: December 2024</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggestion Section -->
+        <div class="suggestion-section">
+            <h3>Suggest a Course</h3>
+            <textarea placeholder="Which course would you like to see next?"></textarea>
+            <button>Submit Suggestion</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 OCC. All rights reserved.</p>
+        <p>Follow us on <a href="#" style="color: #f4f4f9; text-decoration: underline;">Facebook</a> | <a href="#" style="color: #f4f4f9; text-decoration: underline;">Twitter</a> | <a href="#" style="color: #f4f4f9; text-decoration: underline;">Instagram</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navbarLinks = document.getElementById('navbar-links');
+            navbarLinks.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

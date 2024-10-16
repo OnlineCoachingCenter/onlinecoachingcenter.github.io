@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Profiles</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 16px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .navbar .menu-icon {
+                display: none;
+                margin-right: 20px;
+                cursor: pointer;
+                font-size: 24px;
+            }
+
+        .navbar .logo {
+            margin-left: 20px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #007BFF;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin-left: 20px;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar ul li a:hover,
+        .navbar ul li a.active {
+            color: #007BFF;
+            border-bottom: 2px solid #007BFF;
+        }
+
+        /* Responsive Navbar for Phones */
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                right: 0;
+                background-color: #ffffff;
+                width: 100%;
+                display: none;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .navbar ul.show {
+                display: block;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+                margin-right: 20px;
+                cursor: pointer;
+                font-size: 24px;
+            }
+        }
+
+        /* Instructor Profile Styling */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .profile {
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            width: 80%;
+            max-width: 1000px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .profile-info h2 {
+            font-size: 36px;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+
+        .profile-info h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .profile-info p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .profile-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .profile-info ul li {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Alternate Layouts */
+        .profile-right img {
+            order: 2;
+            margin-left: 30px;
+        }
+
+        .profile-left img {
+            order: 1;
+            margin-right: 30px;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #333;
+            color: #f4f4f9;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Responsive Design: Mobile Layout */
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile img {
+                order: -1 !important; /* Ensure photo appears first */
+                margin-bottom: 20px;
+            }
+
+            .profile-right img,
+            .profile-left img {
+                margin: 0 0 20px 0; /* Remove margins for consistency on mobile */
+            }
+
+            .profile-info {
+                padding: 10px; /* Reduce padding for mobile */
+            }
+        }
+    </style>
+
+<link rel="apple-touch-icon" sizes="180x180" href="logo/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16x16.png">
+<link rel="manifest" href="logo/site.webmanifest">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Online Coaching Center</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul id="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="course.html">Courses</a></li>
+            <li><a href="instructor.html" class="active">Instructors</a></li>
+            <li><a href="resource.html">Resources</a></li>
+            <li><a href="about.html">About Us</a></li>
+            
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </div>
+
+    <!-- Instructor Profiles Section -->
+    <div class="profile-container">
+
+        <!-- Instructor 1: Photo on the right, Info on the left -->
+        <div class="profile profile-right">
+            <div class="profile-info">
+                <h2>John Doe</h2>
+                <h4>Senior Data Scientist</h4>
+                <p>John has over 10 years of experience in Data Science, Machine Learning, and Artificial Intelligence. He has worked with Fortune 500 companies and helped them scale their data-driven strategies.</p>
+                <ul>
+                    <li><strong>Expertise:</strong> Data Science, Machine Learning, AI</li>
+                    <li><strong>Education:</strong> Ph.D. in Computer Science</li>
+                    <li><strong>Email:</strong> john.doe@coachingcenter.com</li>
+                    <li><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/johndoe</a></li>
+                </ul>
+            </div>
+            <img src="p/f1.jpg" alt="Instructor 1 Photo">
+        </div>
+
+        <!-- Instructor 2: Photo on the left, Info on the right -->
+        <div class="profile profile-left">
+            <img src="p/l1.jpg" alt="Instructor 2 Photo">
+            <div class="profile-info">
+                <h2>Jane Smith</h2>
+                <h4>Lead Software Engineer</h4>
+                <p>Jane has over 8 years of experience in software engineering, specializing in backend development and cloud computing solutions. She has contributed to several major open-source projects.</p>
+                <ul>
+                    <li><strong>Expertise:</strong> Software Engineering, Cloud Computing</li>
+                    <li><strong>Education:</strong> M.Sc. in Computer Science</li>
+                    <li><strong>Email:</strong> jane.smith@coachingcenter.com</li>
+                    <li><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/janesmith</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2024 OCC. All Rights Reserved.</p>
+        <p>Follow us on <a href="#" style="color: #f4f4f9; text-decoration: underline;">Facebook</a> | <a href="#" style="color: #f4f4f9; text-decoration: underline;">Twitter</a> | <a href="#" style="color: #f4f4f9; text-decoration: underline;">Instagram</a></p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var navbarLinks = document.getElementById('navbar-links');
+            navbarLinks.classList.toggle('show');
+        }
+    </script>
+
+</body>
+</html>

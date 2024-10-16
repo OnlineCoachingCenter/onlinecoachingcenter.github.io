@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Coaching Center - Resources</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 16px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .navbar .menu-icon {
+                display: none;
+                margin-right: 20px;
+                cursor: pointer;
+                font-size: 24px;
+            }
+
+        .navbar .logo {
+            margin-left: 20px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #007BFF;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin-left: 20px;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar ul li a:hover,
+        .navbar ul li a.active {
+            color: #007BFF;
+            border-bottom: 2px solid #007BFF;
+        }
+
+        /* Responsive Navbar for Phones */
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                right: 0;
+                background-color: #ffffff;
+                width: 100%;
+                display: none;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .navbar ul.show {
+                display: block;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+                margin-right: 20px;
+                cursor: pointer;
+                font-size: 24px;
+            }
+        }
+
+        /* Content Styling */
+        .content {
+            flex: 1;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+        }
+
+        .section ul li a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .section ul li a:hover {
+            color: #0056b3;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #333;
+            color: #f4f4f9;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 10px;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+
+<link rel="apple-touch-icon" sizes="180x180" href="logo/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16x16.png">
+<link rel="manifest" href="logo/site.webmanifest">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Online Coaching Center</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul id="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="course.html">Courses</a></li>
+            <li><a href="instructor.html">Instructors</a></li>
+            <li><a href="resource.html" class="active">Resources</a></li>
+            <li><a href="about.html">About Us</a></li>
+            
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </div>
+
+    <!-- Resource Content -->
+    <div class="content">
+        <h2>Resources</h2>
+
+        <!-- Lecture Materials Section -->
+        <div class="section">
+            <h3>Lecture Materials</h3>
+            <ul>
+                <li><a href="https://drive.google.com/example1" target="_blank">Material 1 - Topic A</a></li>
+                <li><a href="https://drive.google.com/example2" target="_blank">Material 2 - Topic B</a></li>
+            </ul>
+        </div>
+
+        <!-- Recorded Lectures Section -->
+        <div class="section">
+            <h3>Recorded Lectures</h3>
+            <ul>
+                <li><a href="https://drive.google.com/example3" target="_blank">Recorded Lecture 1 - Topic A</a></li>
+                <li><a href="https://drive.google.com/example4" target="_blank">Recorded Lecture 2 - Topic B</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2024 OCC. All Rights Reserved.</p>
+        <p>Follow us on <a href="#" style="color: #f4f4f9; text-decoration: underline;">Facebook</a> | <a href="#" style="color: #f4f4f9; text-decoration: underline;">Twitter</a> | <a href="#" style="color: #f4f4f9; text-decoration: underline;">Instagram</a></p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var navbarLinks = document.getElementById('navbar-links');
+            navbarLinks.classList.toggle('show');
+        }
+    </script>
+
+</body>
+</html>
